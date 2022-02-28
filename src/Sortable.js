@@ -795,8 +795,8 @@ Sortable.prototype = /** @lends Sortable.prototype */ {
 				fallbackOffset = options.fallbackOffset,
 				touch = evt.touches ? evt.touches[0] : evt,
 				ghostMatrix = ghostEl && matrix(ghostEl, true),
-				scaleX = ghostEl && ghostMatrix && ghostMatrix.a,
-				scaleY = ghostEl && ghostMatrix && ghostMatrix.d,
+				scaleX = this.options.fallbackOverridedScaleX || ghostEl && ghostMatrix && ghostMatrix.a,
+				scaleY = this.options.fallbackoverridedScaleY || ghostEl && ghostMatrix && ghostMatrix.d,
 				relativeScrollOffset = PositionGhostAbsolutely && ghostRelativeParent && getRelativeScrollOffset(ghostRelativeParent),
 				dx = ((touch.clientX - tapEvt.clientX)
 						+ fallbackOffset.x) / (scaleX || 1)
